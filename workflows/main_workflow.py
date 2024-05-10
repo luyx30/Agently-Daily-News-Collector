@@ -87,9 +87,11 @@ def start(*, agent_factory, SETTINGS, root_path, logger):
                     md_doc_text += f'    - `[summray]` { single_news["summary"] }\n'
                     md_doc_text += f'    - `[comment]` { single_news["recommend_comment"] }\n\n'
             # Tailer
-            md_doc_text +="\n\n---\n\nPowered by [Agently AI Application Development Framework & Agently Workflow](https://github.com/Maplemx/Agently)\n\n"
+            #md_doc_text +="\n\n---\n\nPowered by [Agently AI Application Development Framework & Agently Workflow](https://github.com/Maplemx/Agently)\n\n"
+            #md_doc_text += f"Model Information：{ SETTINGS.MODEL_PROVIDER if hasattr(SETTINGS, 'MODEL_PROVIDER') else 'OpenAI' } - { str(SETTINGS.MODEL_OPTIONS) if hasattr(SETTINGS, 'MODEL_OPTIONS') else 'Default Options' }\n\n"
+            #md_doc_text += '**_<font color = "red">Agent</font><font color = "blue">ly</font>_** [Guidebook](https://github.com/Maplemx/Agently/blob/main/docs/guidebook)\n\n[Apply Developers WeChat Group](https://doc.weixin.qq.com/forms/AIoA8gcHAFMAScAhgZQABIlW6tV3l7QQf) or Scan QR Code to Apply.\n\n<img width="120" alt="image" src="https://github.com/Maplemx/Agently/assets/4413155/7f4bc9bf-a125-4a1e-a0a4-0170b718c1a6">'
+            md_doc_text +="\n\n---\n\nPowered by AI\n\n"
             md_doc_text += f"Model Information：{ SETTINGS.MODEL_PROVIDER if hasattr(SETTINGS, 'MODEL_PROVIDER') else 'OpenAI' } - { str(SETTINGS.MODEL_OPTIONS) if hasattr(SETTINGS, 'MODEL_OPTIONS') else 'Default Options' }\n\n"
-            md_doc_text += '**_<font color = "red">Agent</font><font color = "blue">ly</font>_** [Guidebook](https://github.com/Maplemx/Agently/blob/main/docs/guidebook)\n\n[Apply Developers WeChat Group](https://doc.weixin.qq.com/forms/AIoA8gcHAFMAScAhgZQABIlW6tV3l7QQf) or Scan QR Code to Apply.\n\n<img width="120" alt="image" src="https://github.com/Maplemx/Agently/assets/4413155/7f4bc9bf-a125-4a1e-a0a4-0170b718c1a6">'
             logger.info("[Markdown Generated]", md_doc_text)
             with open(f'{ root_path }/{ outline["report_title"] }_{ datetime.now().strftime("%Y-%m-%d") }.md', 'w', encoding='utf-8') as f:
                 f.write(md_doc_text)
