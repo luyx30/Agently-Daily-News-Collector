@@ -93,10 +93,14 @@ def start(*, agent_factory, SETTINGS, root_path, logger):
             md_doc_text +="\n\n---\n\nPowered by AI\n\n"
             md_doc_text += f"Model Information：{ SETTINGS.MODEL_PROVIDER if hasattr(SETTINGS, 'MODEL_PROVIDER') else 'OpenAI' } - { str(SETTINGS.MODEL_OPTIONS) if hasattr(SETTINGS, 'MODEL_OPTIONS') else 'Default Options' }\n\n"
             logger.info("[Markdown Generated]", md_doc_text)
+            # 将执行结果记录到日志中。
+            logger.error("Markdown Generation Successed")
             with open(f'{ root_path }/{ outline["report_title"] }_{ datetime.now().strftime("%Y-%m-%d") }.md', 'w', encoding='utf-8') as f:
                 f.write(md_doc_text)
         else:
             logger.info("[Markdown Generation Failed] Due to have not any column data.")
+            # 将执行结果记录到日志中。
+            logger.error("Markdown Generation Failed")
 
     # Connect Chunks
     (
